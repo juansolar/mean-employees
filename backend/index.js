@@ -5,6 +5,7 @@ const app = express();
 app.set('port', process.env.PORT ||3000);
 
 //middlewares
+app.use(express.json()); //entender los formatos json que vienen del navegador
 
 //routes
 
