@@ -10,7 +10,7 @@ app.set('port', process.env.PORT ||3000);
 app.use(express.json()); //entender los formatos json que vienen del navegador
 
 //routes
-
+app.use(require('./routes/employee.routes'));
 
 //star server
 app.listen(app.get('port'), () => {
