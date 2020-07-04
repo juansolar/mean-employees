@@ -16,13 +16,23 @@ export class EmployeesComponent implements OnInit {
   constructor(public employeeService: EmployeeService ) { }
 
   ngOnInit(): void {
+    //funciones que se carga cuando se ejecuta la aplicacion
+    this.getEmployees();
   }
 
   addEmployee(form: NgForm){
     this.employeeService.postEmployee(form.value).subscribe(res => {
       this.resetForm(form);
       M.toast({html: "Save Succesfuly"});
+      this.getEmployees();
     })
+  }
+
+  getEmployees(){
+    this.employeeService.getEmployees().subscribe( res => {
+      this.employeeService.employees = res as Employee[];
+      console.log(res);
+    });
   }
 
   resetForm(form?: NgForm){
